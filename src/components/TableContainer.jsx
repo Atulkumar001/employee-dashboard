@@ -35,6 +35,7 @@ const TableContainer = () => {
     const [open, setOpen] = React.useState(false);
     const [hovered, setHovered] = React.useState(null);
     const [rowItem, setRowItem] = React.useState({});
+    const [newEmployee, setNewEmployee] = React.useState({})
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const handleEdit = (row) => {
@@ -42,12 +43,24 @@ const TableContainer = () => {
         handleOpen()
         setRowItem(row)
     }
+
+    const handleNewUser = () => {
+        handleOpen()
+        setRowItem({})
+    }
     const passRows = () => {
+        
         const rowIndex = rows.findIndex(row => row.id === rowItem.id)
         if (rowIndex !== -1) {
             const newRows = [...rows]
             newRows[rowIndex] = rowItem
             setRows(newRows)
+        } else if (!rowItem.id) {
+            const newRow = {
+                ...rowItem,
+                id: Math.max(...rows.map(row => row.id), 0) + 1
+            }
+            setRows([...rows, newRow])
         }
     }
     const columns = [
@@ -58,7 +71,7 @@ const TableContainer = () => {
       { field: 'email', headerName: 'E-mail', flex: 1 },
       {
         field: 'access',
-        headerName: 'Access type',
+        headerName: 'Work type',
         flex: "center",
         // align: 'center',
         
@@ -146,6 +159,21 @@ const TableContainer = () => {
                 }
               }}
            >
+            
+            <Box 
+               display="flex"
+               justifyContent="flex-end"
+               mt="20px"
+            >
+                <Button 
+                   variant="contained" 
+                   onClick={() => {
+                      handleNewUser()
+                   }}
+                >
+                   Add Employee
+                </Button>
+            </Box>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -199,18 +227,22 @@ const TableContainer = () => {
                             />
                         </Box>
                         <Box mb={2}>
-                            <Typography variant="body1" gutterBottom>Access:</Typography>
+                            <Typography variant="body1" gutterBottom>Office Type:</Typography>
                             <Select
                                 value={rowItem.access}
                                 onChange={(e) => setRowItem({...rowItem, access: e.target.value})}
                                 variant="outlined"
                                 >
-                                <MenuItem value="admin">Admin</MenuItem>
-                                <MenuItem value="manager">Manager</MenuItem>
-                                <MenuItem value="user">User</MenuItem>
+                                <MenuItem value="wfh">WFH</MenuItem>
+                                
+                                <MenuItem value="Wfo">WFO</MenuItem>
                             </Select>
                         </Box>
-                        <Box mt={2}>
+                        <Box
+                            mt={2}
+                            display="flex"
+                            justifyContent="flex-end"
+                        >
                             <Button
                                 type="submit"
                                 variant="contained"
@@ -219,6 +251,7 @@ const TableContainer = () => {
                                     '&:hover': {
                                         backgroundColor: colors.greenAccent[700],
                                     },
+                                    padding: '0.8rem 0.5rem',
                                 }}
                             >
                                 Save

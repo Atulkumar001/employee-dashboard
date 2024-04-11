@@ -90,51 +90,6 @@ const SideBarContainer = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-
-                        <Divider>
-                            {!collapsed && (
-                                <Typography 
-                                    variant="h6"
-                                    color={colors.grey[300]}
-                                > 
-                                    Tools
-                                </Typography>
-                            )}
-                        </Divider> 
-                        
-                        <Item 
-                            title="Calender"
-                            to="/calender"
-                            icon={<CalendarTodayOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
-                        <Item 
-                            title="Notes"
-                            to="/notes"
-                            icon={<NotesOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
-
-                        <Divider>
-                            {!collapsed && (
-                                <Typography 
-                                    variant="h6"
-                                    color={colors.grey[300]}
-                                > 
-                                    Settings
-                                </Typography>
-                            )}
-                        </Divider>  
-                        
-                        <Item 
-                            title="Settings"
-                            to="/settings"
-                            icon={<SettingsOutlined />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
                     </Box>
                 </Menu>
             </ProSidebar>

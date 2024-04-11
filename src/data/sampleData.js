@@ -5,7 +5,7 @@ export const sampleData = [
       email: 'jonsnow@gmail.com',
       age: 35,
       phone: '(665)121-5454',
-      access: 'admin'
+      access: 'wfh'
     },
     {
       id: 2,
@@ -13,7 +13,7 @@ export const sampleData = [
       email: 'cerseilannister@gmail.com',
       age: 42,
       phone: '(421)314-2288',
-      access: 'manager'
+      access: 'wfo'
     },
     {
       id: 3,
@@ -21,7 +21,7 @@ export const sampleData = [
       email: 'jaimelannister@gmail.com',
       age: 45,
       phone: '(422)982-6739',
-      access: 'user'
+      access: 'wfo'
     },
     {
       id: 4,
@@ -29,7 +29,7 @@ export const sampleData = [
       email: 'anyastark@gmail.com',
       age: 16,
       phone: '(921)425-6742',
-      access: 'admin'
+      access: 'wfo'
     },
     // {
     //   id: 5,
