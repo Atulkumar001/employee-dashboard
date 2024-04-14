@@ -135,9 +135,11 @@ const TableContainer = () => {
     { field: "email", headerName: "E-mail", flex: 1 },
     {
       field: "access",
-      headerName: "Access",
+      headerName: "Worktype (wfh/wfo)",
       flex: 1,
       type: "array",
+      headerAlign: "center",
+      align: "right",
       renderCell: ({ row }) => {
         const values = row.access || [];
         return (
